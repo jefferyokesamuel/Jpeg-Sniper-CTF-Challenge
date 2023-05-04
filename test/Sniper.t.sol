@@ -5,10 +5,6 @@ import "../src/BaseLaunchpegNFT.sol";
 import "../src/LaunchpegErrors.sol";
 import "forge-std/Test.sol";
 
-// Vulnerability is in one of the conditions present in publicSaleMint function which checks the balanceOf the msg.sender. 
-// This can be modified if the user transfers the ownership of NFTs to secondary address. Through this they can call the publicSaleMint function again 
-// and again until they mint all NFTs which violates the maxPerAddressDuringMint. isEOA modifier can be passed through performing the exploit in
-// a contract constructor because code size will be 0. 
 
 contract Attack {
     FlatLaunchpeg public flatlaunchpegContract;
